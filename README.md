@@ -2,7 +2,7 @@
 
 A full-stack web application that allows you to track your daily expenses simply by speaking. This project uses Google's Gemini API to understand natural language, categorize your spending, and help you visualize your finances against your set budgets.
 
-![Dashboard Screenshot](https://i.imgur.com/your-screenshot-url.png) ## ✨ Features
+ ✨ Features
 
 - **Voice-Powered Entry**: Add new expenses by describing them in natural language.
 - **AI Categorization**: Uses Google's Gemini API to automatically extract the amount and category from your speech.
@@ -15,7 +15,7 @@ A full-stack web application that allows you to track your daily expenses simply
 ## 🛠️ Tech Stack
 
 - **Frontend**: HTML5, CSS3, JavaScript (Web Speech API)
-- **Backend**: Python 3.11, Flask, Gunicorn
+- **Backend**: Python 3.11, Flask
 - **Database**: MariaDB
 - **AI**: Google Gemini API
 - **DevOps**: Docker, Docker Compose, Nginx (as a reverse proxy)
