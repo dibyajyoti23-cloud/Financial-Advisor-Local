@@ -1,0 +1,39 @@
+# docker-compose.yml
+
+version: '3.8'
+
+services:
+  db:
+    image: mariadb:10.6
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - mariadb_data:/var/lib/mysql
+
+  backend:
+    build: ./backend
+    restart: always
+    volumes:
+      - ./backend:/app # Mounts local code for live updates
+    env_file:
+      - ./.env
+    depends_on:
+      - db
+
+  frontend:
+    image: nginx:1.21-alpine
+    restart: always
+    ports:
+      - "8080:80" # Access the app via localhost:8080
+    volumes:
+      - ./frontend:/usr/share/nginx/html
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - backend
+
+volumes:
+  mariadb_data:
